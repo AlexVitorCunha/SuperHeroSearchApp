@@ -4,6 +4,8 @@ module com.example.f21comp1011assignment2 {
     requires javafx.graphics;
     requires okhttp3;
     requires com.google.gson;
+    requires json.simple;
+    requires unirest.java;
 
 
     opens com.example.f21comp1011assignment2 to javafx.fxml;

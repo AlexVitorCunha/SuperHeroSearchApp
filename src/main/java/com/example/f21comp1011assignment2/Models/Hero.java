@@ -1,25 +1,33 @@
 package com.example.f21comp1011assignment2.Models;
 
-import java.util.HashMap;
-
 public class Hero {
-    private String heroName, FullName, PlaceOfBirth, Publisher, Image;
-    private int Intelligence, Strength, Speed, Durability, Power, Combat;
+    private Biography items;
+    private Powerstats stats;
+    private Image photo;
 
-    public Hero(String heroName) {
-        this.heroName = heroName;
+    public Biography getItems() {
+        return items;
     }
 
-    public String getHeroName() {
-        return heroName;
+    public void setItems(Biography items) {
+        this.items = items;
     }
 
-    public void setHeroName(String heroName) {
-        this.heroName = heroName;
+    public String toString(){return String.format("%s",items.getFullName());}
+
+    public Powerstats getStats() {
+        return stats;
     }
 
-    public boolean contains(String searchText){
-        searchText = searchText.toLowerCase();
-        return heroName.toLowerCase().contains(searchText);
+    public void setStats(Powerstats stats) {
+        this.stats = stats;
+    }
+
+    public Image getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Image photo) {
+        this.photo = photo;
     }
 }

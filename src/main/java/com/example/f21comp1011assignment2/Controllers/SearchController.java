@@ -1,13 +1,17 @@
 package com.example.f21comp1011assignment2.Controllers;
 
+import com.example.f21comp1011assignment2.Models.ApiResponse;
 import com.example.f21comp1011assignment2.Models.Hero;
 import com.example.f21comp1011assignment2.Utilities.ReadAPI;
 import com.example.f21comp1011assignment2.Utilities.SceneChanger;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,10 +27,10 @@ public class SearchController implements Initializable {
     private Label heroesReturnedLabel;
 
     @FXML
-    private TableColumn<Hero, String> nameCol;
+    private ListView<Hero> initialHeroDataListView;
 
     @FXML
-    private TableView<Hero> tableView;
+    private ImageView photoImageView;
 
     @FXML
     private Label instructionsLabel;
@@ -38,34 +42,26 @@ public class SearchController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            allHeroes = ReadAPI.getHeroes();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("heroName"));
+        initialHeroDataListView.getSelectionModel().selectedItemProperty().addListener(
+                (obs,oldHero,heroSelected) ->{
+                    try{
+                        photoImageView.setImage(new Image(heroSelected.getPhoto().getMd()));
+                    }catch (Exception e){
 
+                    }
+                });
     }
 
     @FXML
-    private void searchButton(ActionEvent event) throws IOException {
-        tableView.getItems().clear();
-        tableView.getItems().addAll(allHeroes.stream()
-                .filter(hero -> hero.contains(searchTextField.getText()))
-                .collect(Collectors.toList()));
-        tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        tableView.getSelectionModel().selectedItemProperty().addListener(
-                (obs,oldValue,heroSelected) ->{
-                    if(heroSelected != null)
-                    {
-                        try {
-                            SceneChanger.changeScenes(event,"details-view.fxml", heroSelected.getHeroName());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-        );
+    private void searchButton(ActionEvent event) throws IOException, UnirestException {
+        initialHeroDataListView.getItems().clear();
+        Hero[] heroes = ReadAPI.getHeroes(searchTextField.getText());
+        if(heroes != null)
+        {
+            for(int i = 1; i <= heroes.length; i++){
+                initialHeroDataListView.getItems().add(heroes[i]);
+            }
+        }
     }
 
 }

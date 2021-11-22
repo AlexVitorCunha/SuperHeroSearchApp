@@ -1,33 +1,39 @@
 package com.example.f21comp1011assignment2.Utilities;
 
+import com.example.f21comp1011assignment2.Models.ApiResponse;
 import com.example.f21comp1011assignment2.Models.Hero;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
+
+
 
 
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.lang.reflect.Type;
+
 
 public class ReadAPI {
-    public static ArrayList<Hero> getHeroes() throws IOException {
-        Gson gson = new Gson();
-        ArrayList<Hero> heroes = new ArrayList<>();
-        OkHttpClient client = new OkHttpClient();
+    public static Hero[] getHeroes(String searchTerm) throws IOException, UnirestException {
+        Hero[] heroes = null;
+        searchTerm = searchTerm.trim().replace(" ", "%20");
+        String uri = "https://superhero-search.p.rapidapi.com/api/?regex=" + searchTerm;
+        HttpResponse<String> response = Unirest.get(uri)
+                .header("x-rapidapi-host", "superhero-search.p.rapidapi.com")
+                .header("x-rapidapi-key", "0dc6df9401msh50066983c384323p17c0ffjsn1221c38f1c1f")
+                .asString();
 
-        Request request = new Request.Builder()
-                .url("https://superhero-search.p.rapidapi.com/api/?hero=Spiderman")
-                .get()
-                .addHeader("x-rapidapi-host", "superhero-search.p.rapidapi.com")
-                .addHeader("x-rapidapi-key", "0dc6df9401msh50066983c384323p17c0ffjsn1221c38f1c1f")
-                .build();
-        Response response = client.newCall(request).execute();
-        heroes.add(new Hero("Wonder Woman"));
-        heroes.add(new Hero("Shazam"));
+        String jsonString = response.getBody();
+        System.out.println(jsonString);
+        Gson gson = new Gson();
+        try{
+            heroes = gson.fromJson(jsonString, Hero[].class);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         return heroes;
     }
 }
