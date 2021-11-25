@@ -8,10 +8,10 @@ module com.example.f21comp1011assignment2 {
     requires unirest.java;
 
 
-    opens com.example.f21comp1011assignment2 to javafx.fxml;
+    opens com.example.f21comp1011assignment2 to javafx.fxml, com.google.gson;
     exports com.example.f21comp1011assignment2;
     exports com.example.f21comp1011assignment2.Controllers;
-    opens com.example.f21comp1011assignment2.Controllers to javafx.fxml;
+    opens com.example.f21comp1011assignment2.Controllers to javafx.fxml, com.google.gson;
     exports com.example.f21comp1011assignment2.Models;
-    opens com.example.f21comp1011assignment2.Models to javafx.fxml;
+    opens com.example.f21comp1011assignment2.Models to javafx.fxml, com.google.gson;
 }

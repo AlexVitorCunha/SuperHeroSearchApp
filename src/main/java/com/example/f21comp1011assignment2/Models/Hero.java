@@ -1,33 +1,52 @@
 package com.example.f21comp1011assignment2.Models;
 
 public class Hero {
-    private Biography items;
-    private Powerstats stats;
-    private Image photo;
+    private int id;
+    private String name;
+    private Biography biography;
+    private Powerstats powerstats;
+    private Image images;
 
-    public Biography getItems() {
-        return items;
+
+    public int getId() {
+        return id;
     }
 
-    public void setItems(Biography items) {
-        this.items = items;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String toString(){return String.format("%s",items.getFullName());}
-
-    public Powerstats getStats() {
-        return stats;
+    public String getName() {
+        return name;
     }
 
-    public void setStats(Powerstats stats) {
-        this.stats = stats;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Image getPhoto() {
-        return photo;
+    public Biography getBiography() {
+        return biography;
     }
 
-    public void setPhoto(Image photo) {
-        this.photo = photo;
+    public void setBiography(Biography biography) {
+        this.biography = biography;
+    }
+
+    public String toString(){return String.format("%s - %s", id,name);}
+
+    public Powerstats getPowerstats() {
+        return powerstats;
+    }
+
+    public void setPowerstats(Powerstats powerstats) {
+        this.powerstats = powerstats;
+    }
+
+    public Image getImages() {
+        return images;
+    }
+
+    public void setImages(Image images) {
+        this.images = images;
     }
 }
