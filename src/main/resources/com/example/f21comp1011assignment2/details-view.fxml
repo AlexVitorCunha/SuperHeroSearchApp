@@ -7,10 +7,79 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.f21comp1011assignment2.Controllers.DetailsController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.f21comp1011assignment2.Controllers.DetailsController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="191.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="256.0" layoutY="21.0" text="Hero name" />
-      <Button fx:id="backButton" layoutX="262.0" layoutY="347.0" mnemonicParsing="false" text="Back" />
+      <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Label fx:id="heroNameLabel" text="Hero name" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <HBox layoutX="56.0" layoutY="71.0" prefHeight="314.0" prefWidth="756.0">
+                     <children>
+                        <GridPane layoutX="56.0" layoutY="97.0" prefHeight="314.0" prefWidth="358.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Full Name:" />
+                              <Label fx:id="fullNameLabel" GridPane.columnIndex="1" />
+                              <Label text="Alignment:" GridPane.rowIndex="1" />
+                              <Label fx:id="alignmentLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="Publisher:" GridPane.rowIndex="2" />
+                              <Label fx:id="publisherLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                        <ImageView fx:id="imageView" fitHeight="280.0" fitWidth="200.0" layoutX="385.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <Label layoutX="38.0" layoutY="207.0" text="Powerstats" />
+                  <GridPane layoutX="38.0" layoutY="241.0" prefHeight="90.0" prefWidth="347.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="58.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="89.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="10.0" prefWidth="48.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Strength:" />
+                        <Label fx:id="strengthLabel" text="Label" GridPane.columnIndex="1" />
+                        <Label text="Durability:" GridPane.rowIndex="1" />
+                        <Label fx:id="durabilityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Combat:" GridPane.rowIndex="2" />
+                        <Label fx:id="combatLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label prefHeight="27.0" prefWidth="74.0" text="Power:" GridPane.columnIndex="2" />
+                        <Label text="Speed:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label text="Intelligence:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label fx:id="powerLabel" text="Label" GridPane.columnIndex="3" />
+                        <Label fx:id="speedLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Label fx:id="intelligenceLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+         </center>
+         <bottom>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backToSearch" text="Back To Search" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <Pane prefHeight="534.0" prefWidth="58.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="534.0" prefWidth="61.0" BorderPane.alignment="CENTER" />
+         </right>
+      </BorderPane>
    </children>
 </AnchorPane>
