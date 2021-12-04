@@ -33,7 +33,7 @@ public class DetailsController implements InitializeHero {
     private Label strengthLabel;
 
     @FXML
-    private ImageView imageView;
+    private ImageView photoImageView;
 
     @FXML
     private Label combatLabel;
@@ -59,7 +59,7 @@ public class DetailsController implements InitializeHero {
         speedLabel.setText(hero.getPowerstats().getSpeed());
         heroNameLabel.setText(hero.getName());
         strengthLabel.setText(hero.getPowerstats().getStrength());
-        imageView.setImage(new Image(hero.getImages().getMd()));
+        photoImageView.setImage(new Image(hero.getImages().getMd()));
         combatLabel.setText(hero.getPowerstats().getCombat());
         powerLabel.setText(hero.getPowerstats().getPower());
         fullNameLabel.setText(hero.getBiography().getFullName());

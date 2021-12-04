@@ -14,6 +14,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SceneChanger {
+    /**
+     * Changes to the search scene
+     * @param event
+     * @param viewFileName
+     * @param title
+     * @throws IOException
+     */
     public static void changeScenes(ActionEvent event, String viewFileName, String title) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(viewFileName));
@@ -21,12 +28,20 @@ public class SceneChanger {
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setTitle(title);
-        //Image icon = new Image("/icon.png");
-        //stage.getIcons().add(icon);
+        Image icon = new Image("/heroicon.png");
+        stage.getIcons().add(icon);
         stage.setScene(scene);
         stage.show();
     }
 
+    /**
+     * changes to the hero details view
+     * @param event
+     * @param viewFileName
+     * @param title
+     * @param hero
+     * @throws IOException
+     */
     public static void changeScenes(ActionEvent event, String viewFileName, String title, Hero hero) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(viewFileName));
@@ -36,8 +51,8 @@ public class SceneChanger {
         controller.loadHeroDetails(hero);
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setTitle(title);
-        //Image icon = new Image("/icon.png");
-        //stage.getIcons().add(icon);
+        Image icon = new Image("/heroicon.png");
+        stage.getIcons().add(icon);
         stage.setScene(scene);
         stage.show();
     }

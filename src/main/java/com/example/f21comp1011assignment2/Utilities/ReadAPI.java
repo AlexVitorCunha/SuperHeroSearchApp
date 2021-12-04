@@ -5,16 +5,13 @@ import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-
-
-
-
-
 import java.io.IOException;
 
-
+/**
+ * Use the API to search for the term on the superhero name field and returns an array of results
+ */
 public class ReadAPI {
-    public static Hero[] getHeroes(String searchTerm) throws IOException, UnirestException {
+    public static Hero[] getHeroes(String searchTerm) throws UnirestException {
         Hero[] heroes = null;
 
         // stores each characters to a char array
@@ -54,10 +51,7 @@ public class ReadAPI {
         Gson gson = new Gson();
         try{
             heroes = gson.fromJson(jsonString, Hero[].class);
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        }catch (Exception e) {}
         return heroes;
     }
 }
