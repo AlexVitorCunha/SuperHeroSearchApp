@@ -14,7 +14,9 @@ public class ReadAPI {
     public static Hero[] getHeroes(String searchTerm) throws UnirestException {
         Hero[] heroes = null;
 
-        // stores each characters to a char array
+        // Capitalizing the first character of each letter because that's how the API works
+        //https://www.programiz.com/java-programming/examples/capitalize-first-character-of-string
+        // stores each character to a char array
         char[] charArray = searchTerm.toCharArray();
         boolean foundSpace = true;
 
