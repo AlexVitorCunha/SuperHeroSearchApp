@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import java.io.IOException;
+
 
 /**
  * Use the API to search for the term on the superhero name field and returns an array of results
@@ -14,7 +14,7 @@ public class ReadAPI {
     public static Hero[] getHeroes(String searchTerm) throws UnirestException {
         Hero[] heroes = null;
 
-        // Capitalizing the first character of each letter because that's how the API works
+        // Capitalizing the first character of each word because that's how the API works
         //https://www.programiz.com/java-programming/examples/capitalize-first-character-of-string
         // stores each character to a char array
         char[] charArray = searchTerm.toCharArray();
