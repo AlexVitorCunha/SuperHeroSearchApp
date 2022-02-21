@@ -2,6 +2,8 @@
 
 Here's my demo - https://www.loom.com/share/de4aaeada9454172a0225ad92362d611
 
+![Screenshot of my project](https://github.com/AlexVitorCunha/SuperHeroSearchApp/blob/master/screenshots/search_page.png?raw=true)
+
 ## Purpose
 
 > This application was developed in my COMP1011 Advanced Object Oriented Programming-Java course at Georgian College.
